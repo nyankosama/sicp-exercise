@@ -5,3 +5,9 @@
 
 (defn square [n] (* n n))
 (defn cube [n] (* n n n))
+(defn average [v1 v2] (/ (+ v1 v2) 2))
+
+(defn gcd [a b]
+  (if (= b 0)
+    a
+    (gcd b (rem a b))))

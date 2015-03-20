@@ -1,5 +1,5 @@
 ;1.3 高阶函数
-(load "common")
+(require 'common)
 ;高阶函数顺序递归求和模板
 (defn sum [term a next b]
   (if (> a b)
