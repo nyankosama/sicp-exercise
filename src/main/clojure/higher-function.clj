@@ -1,5 +1,4 @@
 ;1.3 高阶函数
-
 (load "common")
 ;高阶函数顺序递归求和模板
 (defn sum [term a next b]
@@ -13,18 +12,15 @@
   (letfn [(iter [n result]
             (if (> n b)
               result
-              (iter (next n) (+ (term n) result)))
-            )]
-    iter a 0)
-  )
+              (iter (next n) (+ (term n) result))))]
+    iter a 0))
 
 ;更一般的accumulate函数
 (defn accumulate [combiner null-value term a next b]
   (if (> a b)
     null-value
     (combiner (term a)
-      (accumulate combiner null-value term (next a) next b)))
-  )
+      (accumulate combiner null-value term (next a) next b))))
 
 ;带有filter的更一般的accumulate函数
 (defn accumulate-with-filter
@@ -32,8 +28,7 @@
   (if (> a b)
     null-value
     (combiner (if (filter a) (term a) 0)
-      (accumulate-with-filter combiner null-value filter term next (next a) b))
-    ))
+      (accumulate-with-filter combiner null-value filter term next (next a) b))))
 
 (defn sum-cubes [a b]
   (sum-iter cube a inc b))
