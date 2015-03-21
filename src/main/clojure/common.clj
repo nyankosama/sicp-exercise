@@ -28,7 +28,7 @@
       (my-filter predicate (rest items)))
     :else (my-filter predicate (rest items))))
 
-;accumulate函数，类似于reduce-left
+;accumulate函数，即fold-right
 (defn my-accumulate [op init items]
   (if (empty? items)
     init
