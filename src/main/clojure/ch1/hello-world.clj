@@ -6,24 +6,31 @@
 
 (defn square [n] (* n n))
 
-(defn fastExpt [b n]
+(defn fast-expt [b n]
   (cond
     (= n 0) 1
-    (even? n) (square (fastExpt b (/ n 2)))
-    :else (* b (fastExpt b (- n 1)))))
+    (even? n) (square (fast-expt b (/ n 2)))
+    :else (* b (fast-expt b (- n 1)))))
 
 
-(defn iterExpt [product number count]
+(defn iter-expt [product number count]
   (if (= count 0)
     product
-    (iterExpt (* product number) number (-- count))))
+    (iter-expt (* product number) number (-- count))))
 
-(defn nomalExpt [b n] (iterExpt 1 b n))
+(defn normal-expt [b n] (iter-expt 1 b n))
 
-(defn sumUpTo [begin end]
+(defn sum-up-to [begin end]
   (if
     (= begin end)
     end
-    (+ begin (sumUpTo (++ begin) end))))
+    (+ begin (sum-up-to (++ begin) end))))
 
+(defn sum-up-to-iter [begin end]
+  (letfn [(iter [n ret]
+            (if (> n end)
+              ret
+              (iter (++ n) (+ n ret))))]
+    (iter begin 0)))
 
+(println (sum-up-to-iter 1 10))

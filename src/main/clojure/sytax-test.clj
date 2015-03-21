@@ -13,3 +13,5 @@
 
 (print-hello)
 
+(count)
+

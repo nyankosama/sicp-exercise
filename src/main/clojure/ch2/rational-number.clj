@@ -5,7 +5,7 @@
 ;表示一个有理数的数据抽象
 (defn make-rat [n d]
   (let [g (gcd n d)]
-    (list (/ n g) (/ d g))))
+    (vector (/ n g) (/ d g))))
 (defn number [x] (nth x 0)) ;返回分子
 (defn denom [x] (nth x 1)) ;返回分母
 
